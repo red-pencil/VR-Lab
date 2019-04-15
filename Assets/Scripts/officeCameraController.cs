@@ -31,8 +31,8 @@ public class officeCameraController : MonoBehaviour
         //if (rb)
         // rb.freezeRotation = true;
 
-        
         originalRotation = transform.localRotation;
+        Debug.Log(originalRotation.eulerAngles);
     }
 
     // Update is called once per frame
@@ -52,24 +52,31 @@ public class officeCameraController : MonoBehaviour
             rb.transform.localRotation = Quaternion.identity;
 
 */
-        if (Input.GetKeyDown(KeyCode.Space))
-            originalRotation = rb.transform.localRotation;
-
         
-    if (Input.GetMouseButton(0))
+        
+    if (Input.GetMouseButton(0) || Input.GetKey(KeyCode.LeftCommand))
     {   
         rotationX += Input.GetAxis("Mouse X") * sensitivityX;
     }
         rotationY += Input.GetAxis("Mouse Y") * sensitivityY;
         rotationX = Mathf.Clamp (rotationX, minimumX, maximumX);
         rotationY = Mathf.Clamp (rotationY, minimumY, maximumY);
+        if (Input.GetKeyDown(KeyCode.Space))
+         {
+             //rotationX = 0;
+             rotationY = 0;
+         }
+        Debug.Log("X:" + rotationX);
+        Debug.Log("Y:" + rotationY);
         Quaternion xQuaternion = Quaternion.AngleAxis (rotationX, Vector3.up);
         Quaternion yQuaternion = Quaternion.AngleAxis (rotationY, -Vector3.right);
-        //transform.localRotation = originalRotation * xQuaternion * yQuaternion;
-        transform.localRotation = originalRotation * yQuaternion;
+       
+
+         //transform.localRotation = originalRotation * xQuaternion * yQuaternion;
+        transform.localRotation = originalRotation * yQuaternion; //this rotation
 
         //parentTrans.rotation = rb.transform.rotation * xQuaternion;
-        parentTrans.rotation = xQuaternion;
+        parentTrans.rotation = xQuaternion; //parent rotation
 
 
     }
