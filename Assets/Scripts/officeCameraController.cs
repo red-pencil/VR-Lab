@@ -26,6 +26,8 @@ public class officeCameraController : MonoBehaviour
     {
         rb = GetComponentInParent<Rigidbody>(); 
 
+        
+
         parentTrans = this.transform.parent;
 
         //if (rb)
@@ -66,8 +68,8 @@ public class officeCameraController : MonoBehaviour
              //rotationX = 0;
              rotationY = 0;
          }
-        Debug.Log("X:" + rotationX);
-        Debug.Log("Y:" + rotationY);
+        //Debug.Log("X:" + rotationX);
+        //Debug.Log("Y:" + rotationY);
         Quaternion xQuaternion = Quaternion.AngleAxis (rotationX, Vector3.up);
         Quaternion yQuaternion = Quaternion.AngleAxis (rotationY, -Vector3.right);
        
