@@ -10,14 +10,15 @@ public class officePlayerController : MonoBehaviour
     public float pixelPower;
     public float pixelSpeed;
 
-    public bool dragToSee;
+    public bool pixelOn;
+    public bool dragToSee=true;
 
     
     // Start is called before the first frame update
     void Start()
     {
         rb = GetComponent<Rigidbody>(); 
-        pixel = GetComponent<deviceCamera>();
+        pixel = GetComponentInChildren<deviceCamera>();
     }
 
     // Update is called once per frame
@@ -29,17 +30,24 @@ public class officePlayerController : MonoBehaviour
     void FixedUpdate()
     {
         //pixelPower = GetComponentInChildren<deviceCamera>().detectPixel.r * pixelSpeed;
-        pixelPower = GetComponentInChildren<deviceCamera>().value * pixelSpeed;
-        float moveHorizontal = Input.GetAxis("Horizontal") + pixelPower;
-        float moveVertical = Input.GetAxis("Vertical");
+        
+        GetComponentInChildren<officeCameraController>().dragToSee = dragToSee;
+
+        if (pixelOn)
+            pixelPower = pixel.value * pixelSpeed;
+        else
+            pixelPower = 0.0f;
+        
+
+        float moveHorizontal = Input.GetAxis("Horizontal");
+        float moveVertical = Input.GetAxis("Vertical") + pixelPower;
 
         Vector3 movement = new Vector3 (moveHorizontal, 0.0f, moveVertical);
-
+        
         //rb.velocity = movement * speed;
         movement = this.transform.rotation * movement;
+        Debug.Log("H-axis:"+ Input.GetAxis("Horizontal"));
         this.transform.position += movement * speed;
-
-
-        //rb.AddForce(movement * speed);
+        //b.AddForce(movement * speed);
     }
 }

@@ -37,7 +37,7 @@ public class deviceCamera : MonoBehaviour
         Color.RGBToHSV(webcamTexture.GetPixel(350, 350), out value, out value, out value);
 
         detectPixel = webcamTexture.GetPixel(350, 350);
-        Debug.Log(detectPixel.r);
+        //Debug.Log(detectPixel.r);
 
 
 /*
