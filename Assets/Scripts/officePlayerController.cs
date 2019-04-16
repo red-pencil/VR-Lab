@@ -28,7 +28,8 @@ public class officePlayerController : MonoBehaviour
 
     void FixedUpdate()
     {
-        pixelPower = GetComponentInChildren<deviceCamera>().detectPixel.r * pixelSpeed;
+        //pixelPower = GetComponentInChildren<deviceCamera>().detectPixel.r * pixelSpeed;
+        pixelPower = GetComponentInChildren<deviceCamera>().value * pixelSpeed;
         float moveHorizontal = Input.GetAxis("Horizontal") + pixelPower;
         float moveVertical = Input.GetAxis("Vertical");
 

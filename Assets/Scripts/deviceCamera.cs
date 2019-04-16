@@ -7,10 +7,10 @@ public class deviceCamera : MonoBehaviour
 
     WebCamTexture webcamTexture;
 
-    public Color[] detect;
+    public Color[] detectPixels;
     public Color detectPixel;
     //private float[] detectAlpha = new float[100];
-
+    public float value;
     Color32[] data;
     void Start()
     {
@@ -33,6 +33,8 @@ public class deviceCamera : MonoBehaviour
         webcamTexture.GetPixels32(data);
         Debug.Log(data[500000].g);
          */
+
+        Color.RGBToHSV(webcamTexture.GetPixel(350, 350), out value, out value, out value);
 
         detectPixel = webcamTexture.GetPixel(350, 350);
         Debug.Log(detectPixel.r);
