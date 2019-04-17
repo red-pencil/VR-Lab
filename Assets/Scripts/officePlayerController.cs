@@ -8,6 +8,7 @@ public class officePlayerController : MonoBehaviour
     public float speed;
     private deviceCamera pixel;
     private officeCameraController eyeCamera;
+    private gazeCheck button;
     public float pixelPower;
     public float pixelSpeed;
 
@@ -15,7 +16,11 @@ public class officePlayerController : MonoBehaviour
     public bool dragToSee=true;
     public bool newLogic;
 
-    public float firstPower = 1;
+    public float firstPower = 0;
+    public float buttonPower;
+
+    private float axisPowerX;
+    private float axisPowerY;
     
     // Start is called before the first frame update
     void Start()
@@ -23,6 +28,7 @@ public class officePlayerController : MonoBehaviour
         rb = GetComponent<Rigidbody>(); 
         pixel = GetComponentInChildren<deviceCamera>();
         eyeCamera = GetComponentInChildren<officeCameraController>();
+        button = GetComponentInChildren<gazeCheck>();
     }
 
     // Update is called once per frame
@@ -38,23 +44,57 @@ public class officePlayerController : MonoBehaviour
         eyeCamera.dragToSee = dragToSee;
         eyeCamera.newLogic = newLogic;
 
+        float moveHorizontal = 0.0f;
+        float moveVertical = 0.0f;
+        
+        // button part
+
+        if (button._isGazed)
+        {
+            buttonPower += Time.deltaTime * 1.0f;
+            //Debug.Log(Time.del);
+            //moveVertical = buttonPower;
+        }
+        else
+        {
+            buttonPower = 0;
+            //moveVertical = 0;
+
+        }
+        
+        // camera part
+
         if (pixelOn)
             pixelPower = pixel.value * pixelSpeed;
         else
             pixelPower = 0.0f;
 
-        if (newLogic)
-        { 
-            if (Input.GetMouseButton(0))
-                movement = new Vector3 (0.0f, 0.0f, firstPower + pixelPower);
+        // auto part
 
+        if (newLogic || Input.GetMouseButton(0))
+        {
+            firstPower = 1;
+        }
+        else
+            firstPower = 0;
+
+        
+        if (!newLogic)
+        {
+            axisPowerX = Input.GetAxis("Horizontal");
+            axisPowerY = Input.GetAxis("Vertical");   
         }
         else
         {
-            float moveHorizontal = Input.GetAxis("Horizontal");
-            float moveVertical = Input.GetAxis("Vertical") + pixelPower;
-            movement = new Vector3 (moveHorizontal, 0.0f, moveVertical);
+            axisPowerX = 0;
+            axisPowerY = 0;
         }
+
+        Debug.Log(axisPowerY);
+        moveVertical =  axisPowerY + pixelPower + buttonPower + firstPower;
+        moveHorizontal = axisPowerX;
+        movement = new Vector3 (moveHorizontal, 0.0f, moveVertical);
+
         //rb.velocity = movement * speed;
         movement = this.transform.rotation * movement;
         //Debug.Log("H-axis:"+ Input.GetAxis("Horizontal"));

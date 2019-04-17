@@ -16,8 +16,8 @@ public class officeCameraController : MonoBehaviour
     Quaternion originalRotation;
 
 
-    float horizontalSpeed = 2.0f;
-    float verticalSpeed = 2.0f;
+//    float horizontalSpeed = 2.0f;
+//    float verticalSpeed = 2.0f;
 
     private Transform parentTrans;
     public bool dragToSee;
