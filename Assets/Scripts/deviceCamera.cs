@@ -4,7 +4,9 @@ using UnityEngine;
 
 public class deviceCamera : MonoBehaviour
 {
-
+    WebCamDevice[] devices;
+    WebCamDevice rearCamera;
+    
     WebCamTexture webcamTexture;
 
     public Color[] detectPixels;
@@ -14,21 +16,35 @@ public class deviceCamera : MonoBehaviour
     Color32[] data;
     void Start()
     {
-        webcamTexture = new WebCamTexture(72,128);
+        devices = WebCamTexture.devices;
+
+        foreach (WebCamDevice cam in devices){
+            Debug.Log("camFront:" + cam.isFrontFacing);
+        if(!cam.isFrontFacing){
+            rearCamera = cam;
+            break;
+            }
+        }
+        
+
+        webcamTexture = new WebCamTexture();
         /*
         Renderer renderer = GetComponent<Renderer>();
         renderer.material.mainTexture = webcamTexture;
         */
-        webcamTexture.Play();
+        if (devices.Length > 0)
+        {
+            webcamTexture.deviceName = devices[0].name;
+            webcamTexture.Play();
+        }
 
         //data = new Color32[1280 * 720];
-        
+
     }
 
 
     void Update()
     {
-        //Debug.Log(webcamTexture.height + "X" + webcamTexture.width);
        /*
         webcamTexture.GetPixels32(data);
         Debug.Log(data[500000].g);
@@ -36,12 +52,14 @@ public class deviceCamera : MonoBehaviour
 
         Color.RGBToHSV(webcamTexture.GetPixel(350, 350), out value, out value, out value);
 
-        detectPixel = webcamTexture.GetPixel(350, 350);
+        // use red channel
+        //detectPixel = webcamTexture.GetPixel(350, 350);
         //Debug.Log(detectPixel.r);
 
 
 /*
-        //detect =  webcamTexture.GetPixel(350, 350, 10, 10);
+        // use array of pixels
+        //detectPixels =  webcamTexture.GetPixels(350, 350, 10, 10);
         for (int i=0; i < detect.Length; i++)
         {
             detectAlpha[i] = detect[i].grayscale;

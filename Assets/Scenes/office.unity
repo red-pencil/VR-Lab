@@ -193,6 +193,8 @@ MonoBehaviour:
   pixelSpeed: 0
   pixelOn: 0
   dragToSee: 0
+  newLogic: 0
+  firstPower: 1
 --- !u!4 &168339602
 Transform:
   m_ObjectHideFlags: 0
@@ -523,6 +525,7 @@ MonoBehaviour:
   minimumY: -30
   maximumY: 30
   dragToSee: 0
+  newLogic: 0
 --- !u!1 &603997830 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 100008, guid: 23dd89333df9c4d84aac628dcfb14f0f,
@@ -599,8 +602,10 @@ MonoBehaviour:
   speed: 0.1
   pixelPower: 0
   pixelSpeed: 1
-  pixelOn: 1
+  pixelOn: 0
   dragToSee: 0
+  newLogic: 1
+  firstPower: 1
 --- !u!65 &740789846
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -1399,6 +1404,7 @@ MonoBehaviour:
   minimumY: -30
   maximumY: 30
   dragToSee: 0
+  newLogic: 0
 --- !u!54 &1606110867
 Rigidbody:
   m_ObjectHideFlags: 0

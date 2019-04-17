@@ -22,6 +22,8 @@ public class officeCameraController : MonoBehaviour
     private Transform parentTrans;
     public bool dragToSee;
 
+    public bool newLogic;
+
     void Start()
     {
         rb = GetComponentInParent<Rigidbody>();
@@ -52,19 +54,32 @@ public class officeCameraController : MonoBehaviour
             rb.transform.localRotation = Quaternion.identity;
 */
 
-        if ( (!dragToSee) || (Input.GetMouseButton(0) || Input.GetKey(KeyCode.LeftCommand)) )
-        {   
+        if (newLogic)
+        {
+            rotationX += Input.GetAxis("Horizontal") * sensitivityX;
+            rotationY += Input.GetAxis("Vertical") * sensitivityY;
+            rotationX = Mathf.Clamp (rotationX, minimumX, maximumX);
+            rotationY = Mathf.Clamp (rotationY, minimumY, maximumY);
+
+        }
+
+        else
+        {
+            if ( (!dragToSee) || (Input.GetMouseButton(0) || Input.GetKey(KeyCode.LeftCommand)) )
+            {   
             rotationX += Input.GetAxis("Mouse X") * sensitivityX;
             rotationY += Input.GetAxis("Mouse Y") * sensitivityY;
             rotationX = Mathf.Clamp (rotationX, minimumX, maximumX);
             rotationY = Mathf.Clamp (rotationY, minimumY, maximumY);
+            }
+
         }
 
         if (Input.GetKeyDown(KeyCode.Space))
-         {
+        {
              //rotationX = 0;
              rotationY = 0;
-         }
+        }
         //Debug.Log("X:" + rotationX);
         //Debug.Log("Y:" + rotationY);
         Quaternion xQuaternion = Quaternion.AngleAxis (rotationX, Vector3.up);
