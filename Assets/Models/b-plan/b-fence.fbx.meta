@@ -1,0 +1,336 @@
+fileFormatVersion: 2
+guid: c12e787b46b1842b28fff069f8c66fe7
+ModelImporter:
+  serializedVersion: 23
+  fileIDToRecycleName:
+    100000: //RootNode
+    100002: Object_1
+    100004: Object_1 1
+    100006: Object_1 2
+    100008: Object_1 3
+    100010: Object_1 4
+    100012: Object_1 5
+    100014: Object_10
+    100016: Object_10 1
+    100018: Object_10 2
+    100020: Object_10 3
+    100022: Object_10 4
+    100024: Object_10 5
+    100026: Object_11
+    100028: Object_11 1
+    100030: Object_11 2
+    100032: Object_11 3
+    100034: Object_11 4
+    100036: Object_11 5
+    100038: Object_12
+    100040: Object_12 1
+    100042: Object_12 2
+    100044: Object_12 3
+    100046: Object_12 4
+    100048: Object_12 5
+    100050: Object_13
+    100052: Object_13 1
+    100054: Object_13 2
+    100056: Object_13 3
+    100058: Object_13 4
+    100060: Object_13 5
+    100062: Object_14
+    100064: Object_14 1
+    100066: Object_14 2
+    100068: Object_14 3
+    100070: Object_14 4
+    100072: Object_14 5
+    100074: Object_15
+    100076: Object_15 1
+    100078: Object_15 2
+    100080: Object_15 3
+    100082: Object_15 4
+    100084: Object_15 5
+    100086: Object_16
+    100088: Object_16 1
+    100090: Object_16 2
+    100092: Object_16 3
+    100094: Object_16 4
+    100096: Object_16 5
+    100098: Object_2
+    100100: Object_2 1
+    100102: Object_2 2
+    100104: Object_2 3
+    100106: Object_2 4
+    100108: Object_2 5
+    100110: Object_3
+    100112: Object_3 1
+    100114: Object_3 2
+    100116: Object_3 3
+    100118: Object_3 4
+    100120: Object_3 5
+    100122: Object_4
+    100124: Object_4 1
+    100126: Object_4 2
+    100128: Object_4 3
+    100130: Object_4 4
+    100132: Object_4 5
+    100134: Object_5
+    100136: Object_5 1
+    100138: Object_5 2
+    100140: Object_5 3
+    100142: Object_5 4
+    100144: Object_5 5
+    100146: Object_6
+    100148: Object_6 1
+    100150: Object_6 2
+    100152: Object_6 3
+    100154: Object_6 4
+    100156: Object_6 5
+    100158: Object_7
+    100160: Object_7 1
+    100162: Object_7 2
+    100164: Object_7 3
+    100166: Object_7 4
+    100168: Object_7 5
+    100170: Object_8
+    100172: Object_8 1
+    100174: Object_8 2
+    100176: Object_8 3
+    100178: Object_8 4
+    100180: Object_8 5
+    100182: Object_9
+    100184: Object_9 1
+    100186: Object_9 2
+    100188: Object_9 3
+    100190: Object_9 4
+    100192: Object_9 5
+    100194: Object_17
+    400000: //RootNode
+    400002: Object_1
+    400004: Object_1 1
+    400006: Object_1 2
+    400008: Object_1 3
+    400010: Object_1 4
+    400012: Object_1 5
+    400014: Object_10
+    400016: Object_10 1
+    400018: Object_10 2
+    400020: Object_10 3
+    400022: Object_10 4
+    400024: Object_10 5
+    400026: Object_11
+    400028: Object_11 1
+    400030: Object_11 2
+    400032: Object_11 3
+    400034: Object_11 4
+    400036: Object_11 5
+    400038: Object_12
+    400040: Object_12 1
+    400042: Object_12 2
+    400044: Object_12 3
+    400046: Object_12 4
+    400048: Object_12 5
+    400050: Object_13
+    400052: Object_13 1
+    400054: Object_13 2
+    400056: Object_13 3
+    400058: Object_13 4
+    400060: Object_13 5
+    400062: Object_14
+    400064: Object_14 1
+    400066: Object_14 2
+    400068: Object_14 3
+    400070: Object_14 4
+    400072: Object_14 5
+    400074: Object_15
+    400076: Object_15 1
+    400078: Object_15 2
+    400080: Object_15 3
+    400082: Object_15 4
+    400084: Object_15 5
+    400086: Object_16
+    400088: Object_16 1
+    400090: Object_16 2
+    400092: Object_16 3
+    400094: Object_16 4
+    400096: Object_16 5
+    400098: Object_2
+    400100: Object_2 1
+    400102: Object_2 2
+    400104: Object_2 3
+    400106: Object_2 4
+    400108: Object_2 5
+    400110: Object_3
+    400112: Object_3 1
+    400114: Object_3 2
+    400116: Object_3 3
+    400118: Object_3 4
+    400120: Object_3 5
+    400122: Object_4
+    400124: Object_4 1
+    400126: Object_4 2
+    400128: Object_4 3
+    400130: Object_4 4
+    400132: Object_4 5
+    400134: Object_5
+    400136: Object_5 1
+    400138: Object_5 2
+    400140: Object_5 3
+    400142: Object_5 4
+    400144: Object_5 5
+    400146: Object_6
+    400148: Object_6 1
+    400150: Object_6 2
+    400152: Object_6 3
+    400154: Object_6 4
+    400156: Object_6 5
+    400158: Object_7
+    400160: Object_7 1
+    400162: Object_7 2
+    400164: Object_7 3
+    400166: Object_7 4
+    400168: Object_7 5
+    400170: Object_8
+    400172: Object_8 1
+    400174: Object_8 2
+    400176: Object_8 3
+    400178: Object_8 4
+    400180: Object_8 5
+    400182: Object_9
+    400184: Object_9 1
+    400186: Object_9 2
+    400188: Object_9 3
+    400190: Object_9 4
+    400192: Object_9 5
+    400194: Object_17
+    2100000: Material_2
+    2300000: Object_1
+    2300002: Object_10
+    2300004: Object_11
+    2300006: Object_12
+    2300008: Object_13
+    2300010: Object_14
+    2300012: Object_15
+    2300014: Object_16
+    2300016: Object_17
+    2300018: Object_3
+    2300020: Object_4
+    2300022: Object_5
+    2300024: Object_6
+    2300026: Object_7
+    2300028: Object_8
+    2300030: Object_9
+    3300000: Object_1
+    3300002: Object_10
+    3300004: Object_11
+    3300006: Object_12
+    3300008: Object_13
+    3300010: Object_14
+    3300012: Object_15
+    3300014: Object_16
+    3300016: Object_17
+    3300018: Object_3
+    3300020: Object_4
+    3300022: Object_5
+    3300024: Object_6
+    3300026: Object_7
+    3300028: Object_8
+    3300030: Object_9
+    4300000: Object_1
+    4300002: Object_3
+    4300004: Object_4
+    4300006: Object_5
+    4300008: Object_6
+    4300010: Object_7
+    4300012: Object_8
+    4300014: Object_9
+    4300016: Object_10
+    4300018: Object_11
+    4300020: Object_12
+    4300022: Object_13
+    4300024: Object_14
+    4300026: Object_15
+    4300028: Object_16
+    4300030: Object_17
+  externalObjects: {}
+  materials:
+    importMaterials: 1
+    materialName: 0
+    materialSearch: 1
+    materialLocation: 1
+  animations:
+    legacyGenerateAnimations: 4
+    bakeSimulation: 0
+    resampleCurves: 1
+    optimizeGameObjects: 0
+    motionNodeName: 
+    rigImportErrors: 
+    rigImportWarnings: 
+    animationImportErrors: 
+    animationImportWarnings: 
+    animationRetargetingWarnings: 
+    animationDoRetargetingWarnings: 0
+    importAnimatedCustomProperties: 0
+    importConstraints: 0
+    animationCompression: 1
+    animationRotationError: 0.5
+    animationPositionError: 0.5
+    animationScaleError: 0.5
+    animationWrapMode: 0
+    extraExposedTransformPaths: []
+    extraUserProperties: []
+    clipAnimations: []
+    isReadable: 1
+  meshes:
+    lODScreenPercentages: []
+    globalScale: 1
+    meshCompression: 0
+    addColliders: 0
+    useSRGBMaterialColor: 1
+    importVisibility: 1
+    importBlendShapes: 1
+    importCameras: 1
+    importLights: 1
+    swapUVChannels: 0
+    generateSecondaryUV: 0
+    useFileUnits: 1
+    optimizeMeshForGPU: 1
+    keepQuads: 0
+    weldVertices: 1
+    preserveHierarchy: 0
+    indexFormat: 0
+    secondaryUVAngleDistortion: 8
+    secondaryUVAreaDistortion: 15.000001
+    secondaryUVHardAngle: 88
+    secondaryUVPackMargin: 4
+    useFileScale: 1
+    previousCalculatedGlobalScale: 1
+    hasPreviousCalculatedGlobalScale: 0
+  tangentSpace:
+    normalSmoothAngle: 60
+    normalImportMode: 0
+    tangentImportMode: 3
+    normalCalculationMode: 4
+    legacyComputeAllNormalsFromSmoothingGroupsWhenMeshHasBlendShapes: 0
+    blendShapeNormalImportMode: 1
+    normalSmoothingSource: 0
+  importAnimation: 1
+  copyAvatar: 0
+  humanDescription:
+    serializedVersion: 2
+    human: []
+    skeleton: []
+    armTwist: 0.5
+    foreArmTwist: 0.5
+    upperLegTwist: 0.5
+    legTwist: 0.5
+    armStretch: 0.05
+    legStretch: 0.05
+    feetSpacing: 0
+    rootMotionBoneName: 
+    hasTranslationDoF: 0
+    hasExtraRoot: 0
+    skeletonHasParents: 1
+  lastHumanDescriptionAvatarSource: {instanceID: 0}
+  animationType: 0
+  humanoidOversampling: 1
+  additionalBone: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

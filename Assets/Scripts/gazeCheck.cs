@@ -5,8 +5,10 @@ using UnityEngine;
 public class gazeCheck : MonoBehaviour
 {
     public float gazeDistance;
-
     public bool  _isGazed;
+    public string gazedObject = null;
+    public string temp = null;
+    public float gazeTime;
 
     void Update()
     {
@@ -17,11 +19,32 @@ public class gazeCheck : MonoBehaviour
         if (Physics.Raycast(gazeRay, out hit, gazeDistance))
         {
             //Debug.Log(hit);
-            if(hit.collider.tag == "button")
-                {
-                Debug.Log("Gazed!");
-                _isGazed = true;
-                }
+            
+                    if (temp == hit.collider.name)
+                    {
+                        gazeTime = gazeTime + Time.deltaTime;
+                        //Debug.Log("==");
+                    }
+                    else
+                    {
+                        temp = hit.collider.name;
+                        gazeTime = 0;
+                        //Debug.Log("=");
+                    }
+
+                    if ( (temp != null) && (gazeTime >=3) )
+                    {
+                        _isGazed = true;
+                        gazedObject = temp;
+                        //Debug.Log("Hit!" + gazedObject);
+                    }
+                        
+                Debug.Log("Hit!" + hit.collider.name);
+                Debug.Log("Temp:" + temp);
+                
+    
         }
+        //Debug.Log("Hit!" + gazedObject);
+
     }
 }

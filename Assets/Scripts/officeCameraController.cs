@@ -80,18 +80,30 @@ public class officeCameraController : MonoBehaviour
              //rotationX = 0;
              rotationY = 0;
         }
-        //Debug.Log("X:" + rotationX);
-        //Debug.Log("Y:" + rotationY);
-        Quaternion xQuaternion = Quaternion.AngleAxis (rotationX, Vector3.up);
-        Quaternion yQuaternion = Quaternion.AngleAxis (rotationY, -Vector3.right);
+        
        
 
-         //transform.localRotation = originalRotation * xQuaternion * yQuaternion;
-        transform.localRotation = originalRotation * yQuaternion; //this rotation
+        
+         //this rotation
 
         //parentTrans.rotation = rb.transform.rotation * xQuaternion;
-        parentTrans.rotation = xQuaternion; //parent rotation
+        float eyeX = Mathf.Clamp(rotationX, -60, 60);
+        //transform.localRotation = originalRotation * Quaternion.AngleAxis(eyeX, Vector3.up);
+        Debug.Log(Vector3.Angle(parentTrans.forward, this.transform.forward));
+        Debug.DrawRay(transform.position, parentTrans.forward, Color.green);
+        Debug.DrawRay(transform.position, this.transform.forward, Color.yellow);
 
+        if (Mathf.Abs(rotationX) > 60)  
+        {
+            parentTrans.rotation = Quaternion.AngleAxis ((rotationX>0)? rotationX - 60.0f: rotationX + 60.0f, Vector3.up); //parent rotation
+        }
 
+        //Debug.Log("X:" + rotationX);
+        //Debug.Log("Y:" + rotationY);
+        Quaternion xQuaternion = Quaternion.AngleAxis (eyeX, Vector3.up);
+        Quaternion yQuaternion = Quaternion.AngleAxis (rotationY, -Vector3.right);
+
+        //transform.localRotation = originalRotation * yQuaternion;
+        transform.localRotation = originalRotation * xQuaternion * yQuaternion;
     }
 }

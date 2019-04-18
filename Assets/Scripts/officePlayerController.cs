@@ -49,7 +49,7 @@ public class officePlayerController : MonoBehaviour
         
         // button part
 
-        if (button._isGazed)
+        if (button.gazedObject == "arrow")
         {
             buttonPower += Time.deltaTime * 1.0f;
             //Debug.Log(Time.del);
@@ -71,7 +71,7 @@ public class officePlayerController : MonoBehaviour
 
         // auto part
 
-        if (newLogic || Input.GetMouseButton(0))
+        if (newLogic && Input.GetMouseButton(0))
         {
             firstPower = 1;
         }
@@ -90,14 +90,15 @@ public class officePlayerController : MonoBehaviour
             axisPowerY = 0;
         }
 
-        Debug.Log(axisPowerY);
+        //Debug.Log(firstPower);
         moveVertical =  axisPowerY + pixelPower + buttonPower + firstPower;
+        //Debug.Log("axis:"+ axisPowerY +"pixel:"+ pixelPower + "button:"+buttonPower + "first:"+firstPower);
         moveHorizontal = axisPowerX;
         movement = new Vector3 (moveHorizontal, 0.0f, moveVertical);
 
         //rb.velocity = movement * speed;
         movement = this.transform.rotation * movement;
-        //Debug.Log("H-axis:"+ Input.GetAxis("Horizontal"));
+       
         this.transform.position += movement * speed;
         //b.AddForce(movement * speed);
     }
