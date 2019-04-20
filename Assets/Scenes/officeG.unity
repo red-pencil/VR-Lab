@@ -3722,7 +3722,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &1606110865
 Transform:
   m_ObjectHideFlags: 0
@@ -4831,6 +4831,7 @@ GameObject:
   - component: {fileID: 1911809810}
   - component: {fileID: 1911809815}
   - component: {fileID: 1911809814}
+  - component: {fileID: 1911809816}
   m_Layer: 0
   m_Name: playerBody
   m_TagString: Untagged
@@ -4933,7 +4934,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1911809809}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 2c2bc8c02e21c4936be4c9cb2b149151, type: 3}
   m_Name: 
@@ -4946,6 +4947,26 @@ MonoBehaviour:
   newLogic: 1
   firstPower: 1
   buttonPower: 0
+--- !u!114 &1911809816
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1911809809}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bffa1583ccac2bc45873076d77adf9f2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  sensitivityX: 15
+  sensitivityY: 15
+  minimumY: -90
+  maximumY: 90
+  minimumH: -60
+  maximumH: 60
+  rotationV: 0
+  rotationH: 0
 --- !u!1 &1917584956
 GameObject:
   m_ObjectHideFlags: 0
