@@ -4,31 +4,54 @@ using UnityEngine;
 
 public class buttonController : MonoBehaviour
 {
-    public string gazeObj;
+    public string gazeObj, pressedObj;
     private GameObject gbButton, gbPlan;
+
+
     void Start()
     {
         gbButton = GameObject.Find("allButton");
         gbPlan = GameObject.Find("officeBase");
     }
 
-    // Update is called once per frame
+    string buttonMonitor()
+    {
+        //bool[] buttonStates = new bool[5];
+        //string[] buttonNames = new string[5];
+        GameObject[] buttons = GameObject.FindGameObjectsWithTag("button");
+        
+        for (int i =0; i <buttons.Length; i++)
+        {
+            //Debug.Log(buttons[i]);
+            if (buttons[i].GetComponent<gButtonController>()._pressed)
+            {
+                buttons[i].GetComponent<gButtonController>().SetPress(false);
+                buttons[i].GetComponent<gButtonController>().SetGaze(false);
+                return buttons[i].name;
+            }
+                
+        }
+        return null;
+    }
+
+
     void Update()
     {
-        gazeObj = GetComponentInChildren<gazeCheck>().gazedObject;
-
+        //gazeObj = GetComponentInChildren<gazeCheck>().gazedObject;
         //Debug.Log("button" + gazeObj);
-        switch (gazeObj)
+
+        pressedObj = buttonMonitor();
+
+        switch (pressedObj)
         {
         case "gear":
-        {
             gbButton.transform.Find("gear").gameObject.SetActive(false);
             gbButton.transform.Find("optionA").gameObject.SetActive(true);
             gbButton.transform.Find("optionB").gameObject.SetActive(true);
             gbButton.transform.Find("optionC").gameObject.SetActive(true);
+
             print ("gear");
             break;
-        }
         case "a":
             gbButton.transform.Find("optionA").gameObject.SetActive(false);
             gbButton.transform.Find("optionB").gameObject.SetActive(false);
@@ -69,7 +92,7 @@ public class buttonController : MonoBehaviour
             print ("C");
             break;
         default:
-            //print ("no action");
+            print ("no action");
             break;
         }
     }

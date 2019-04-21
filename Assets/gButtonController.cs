@@ -17,19 +17,34 @@ public class gButtonController : MonoBehaviour
     {
         myRenderer = GetComponent<Renderer>();
         SetGaze(false);
+        SetPress(false);
+        //Debug.Log("START" + gameObject.name);
     }
 
     void Update()
     {
 
-        if (_timeMode)
-        {
-            _pressed = false;
-            timeCounter = _gazed ? timeCounter + Time.deltaTime : 0;
-            SetPress((timeCounter >= 2) ? true : false);
-        }
-            
+        // Debug.Log("UPDATE" + gameObject.name);
 
+
+        if (!_gazed)
+            SetPress(false);
+            //Debug.Log("a");
+        else
+        {
+            if (_timeMode)
+            {
+                SetPress(false);
+                timeCounter = _gazed ? timeCounter + Time.deltaTime : 0;
+                SetPress((timeCounter >= 2) ? true : false);
+            }
+
+            //if (_pressed)
+            //    Debug.Log(gameObject.name + "is pressed");
+
+        }
+
+        
 
     }
 

@@ -7,12 +7,13 @@ public class moveForward : MonoBehaviour
 
     GameObject gbPlayer, gbHead;
     public float speed = 1;
-    public bool _gazed;
+    public bool _gazed, _gazeMode;
     
     void Start()
     {
         gbPlayer = GameObject.FindGameObjectWithTag("Player");
         gbHead = GameObject.Find("dummyHead").gameObject;
+        _gazeMode = true;
     }
 
 
@@ -22,13 +23,19 @@ public class moveForward : MonoBehaviour
             gbPlayer.transform.position += gbHead.transform.forward * speed;
     }
 
-    public void forward()
+    public void Forward()
     {
-        _gazed = true;
+        _gazed = _gazeMode ? true : _gazed;
     }
 
-    public void stop()
+    public void Stop()
     {
-        _gazed = false;
+        _gazed = _gazeMode ? false : _gazed;
+    }
+    
+    public void Press()
+    {
+        //_gazed = !_gazed;
+        _gazeMode = !_gazeMode;
     }
 }
