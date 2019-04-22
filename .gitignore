@@ -36,3 +36,7 @@ sysinfo.txt
 *.apk
 *.unitypackage
 .DS_Store
+
+# Materials
+Assets/House_On_The_Lake/
+Assets/_TerrainAutoUpgrade

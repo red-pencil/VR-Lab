@@ -8,6 +8,7 @@ public class deviceCamera : MonoBehaviour
     WebCamDevice rearCamera;
     
     WebCamTexture webcamTexture;
+    public Texture warnTexture;
 
     public Color[] detectPixels;
     public Color detectPixel;
@@ -52,6 +53,11 @@ public class deviceCamera : MonoBehaviour
 
         Renderer renderer = GetComponent<Renderer>();
         renderer.material.mainTexture = webcamTexture;
+
+        if (devices.Length == 0)
+        {
+            renderer.material.mainTexture = warnTexture;
+        }
 
         //data = new Color32[1280 * 720];
 
