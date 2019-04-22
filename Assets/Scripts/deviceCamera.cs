@@ -18,6 +18,7 @@ public class deviceCamera : MonoBehaviour
     {
         devices = WebCamTexture.devices;
 
+        /*
         foreach (WebCamDevice cam in devices){
             Debug.Log("camFront:" + cam.isFrontFacing);
         if(!cam.isFrontFacing){
@@ -25,18 +26,32 @@ public class deviceCamera : MonoBehaviour
             break;
             }
         }
-        
+        */
+
 
         webcamTexture = new WebCamTexture();
-        /*
-        Renderer renderer = GetComponent<Renderer>();
-        renderer.material.mainTexture = webcamTexture;
-        */
-        if (devices.Length > 0)
+
+        if (devices.Length == 1)
         {
             webcamTexture.deviceName = devices[0].name;
             webcamTexture.Play();
         }
+
+        if (devices.Length > 1)
+        {
+            for(int i=0; i < devices.Length; i++)
+            {
+               if (!(devices[i].isFrontFacing))
+                {
+                    webcamTexture.deviceName = devices[i].name;
+                    break;
+                }
+            }
+        }
+
+
+        Renderer renderer = GetComponent<Renderer>();
+        renderer.material.mainTexture = webcamTexture;
 
         //data = new Color32[1280 * 720];
 
