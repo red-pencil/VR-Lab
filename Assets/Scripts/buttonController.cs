@@ -8,6 +8,7 @@ public class buttonController : MonoBehaviour
     private GameObject gbButton, gbPlan, gbHead;
     GameObject[] buttons = new GameObject[5];
     private GameObject optionA, optionB, optionC, gear;
+    private GameObject menu;
     //private gButtonController Switches;
 
 
@@ -23,24 +24,30 @@ public class buttonController : MonoBehaviour
         optionC = gbButton.transform.Find("optionC").gameObject;
         gear = gbButton.transform.Find("gear").gameObject;
 
+        menu = gbHead.transform.Find("MyMenu").gameObject;
+
         optionA.SetActive(true);
         optionB.SetActive(true);
         optionC.SetActive(true);
         gear.SetActive(true);
+        menu.SetActive(true);
+
 
         buttons = GameObject.FindGameObjectsWithTag("button");
 
         optionA.SetActive(false);
         optionB.SetActive(false);
         optionC.SetActive(false);
+        menu.SetActive(false);
     }
 
-    void GearShift()
+    public void GearShift()
     {
 
         optionA.SetActive(!optionA.activeSelf);
         optionB.SetActive(!optionB.activeSelf);
         optionC.SetActive(!optionC.activeSelf);
+        menu.SetActive(!menu.activeSelf);
 
         gear.SetActive(!gear.activeSelf);
 
