@@ -5,7 +5,7 @@ using UnityEngine;
 public class deviceCamera : MonoBehaviour
 {
     WebCamDevice[] devices;
-    WebCamDevice rearCamera;
+    WebCamDevice backCam;
     
     WebCamTexture webcamTexture;
     public Texture warnTexture;
@@ -14,7 +14,9 @@ public class deviceCamera : MonoBehaviour
     public Color detectPixel;
     //private float[] detectAlpha = new float[100];
     public float value;
-    Color32[] data;
+    //Color32[] dataX;
+
+
     void Start()
     {
         devices = WebCamTexture.devices;
@@ -29,13 +31,19 @@ public class deviceCamera : MonoBehaviour
         }
         */
 
+        Renderer renderer = GetComponent<Renderer>();
 
-        webcamTexture = new WebCamTexture();
+        if (devices.Length == 0)
+        {
+            renderer.material.mainTexture = warnTexture;
+            return;
+        }
+
 
         if (devices.Length == 1)
         {
-            webcamTexture.deviceName = devices[0].name;
-            webcamTexture.Play();
+            webcamTexture = new WebCamTexture(devices[0].name);
+
         }
 
         if (devices.Length > 1)
@@ -44,20 +52,15 @@ public class deviceCamera : MonoBehaviour
             {
                if (!(devices[i].isFrontFacing))
                 {
-                    webcamTexture.deviceName = devices[i].name;
+                    webcamTexture = new WebCamTexture(devices[i].name); 
                     break;
                 }
             }
         }
 
-
-        Renderer renderer = GetComponent<Renderer>();
+        
+        webcamTexture.Play();
         renderer.material.mainTexture = webcamTexture;
-
-        if (devices.Length == 0)
-        {
-            renderer.material.mainTexture = warnTexture;
-        }
 
         //data = new Color32[1280 * 720];
 

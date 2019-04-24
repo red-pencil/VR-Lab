@@ -5,20 +5,52 @@ using UnityEngine;
 public class buttonController : MonoBehaviour
 {
     public string gazeObj, pressedObj;
-    private GameObject gbButton, gbPlan;
+    private GameObject gbButton, gbPlan, gbHead;
+    GameObject[] buttons = new GameObject[5];
+    private GameObject optionA, optionB, optionC, gear;
+    //private gButtonController Switches;
 
 
     void Start()
     {
         gbButton = GameObject.Find("allButton");
         gbPlan = GameObject.Find("officeBase");
+        gbHead = GameObject.Find("dummyHead");
+
+
+        optionA = gbButton.transform.Find("optionA").gameObject;
+        optionB = gbButton.transform.Find("optionB").gameObject;
+        optionC = gbButton.transform.Find("optionC").gameObject;
+        gear = gbButton.transform.Find("gear").gameObject;
+
+        optionA.SetActive(true);
+        optionB.SetActive(true);
+        optionC.SetActive(true);
+        gear.SetActive(true);
+
+        buttons = GameObject.FindGameObjectsWithTag("button");
+
+        optionA.SetActive(false);
+        optionB.SetActive(false);
+        optionC.SetActive(false);
     }
 
-    string buttonMonitor()
+    void GearShift()
+    {
+
+        optionA.SetActive(!optionA.activeSelf);
+        optionB.SetActive(!optionB.activeSelf);
+        optionC.SetActive(!optionC.activeSelf);
+
+        gear.SetActive(!gear.activeSelf);
+
+    }
+
+    string ButtonMonitor()
     {
         //bool[] buttonStates = new bool[5];
         //string[] buttonNames = new string[5];
-        GameObject[] buttons = GameObject.FindGameObjectsWithTag("button");
+        //GameObject[] buttons = GameObject.FindGameObjectsWithTag("button");
         
         for (int i =0; i <buttons.Length; i++)
         {
@@ -35,65 +67,51 @@ public class buttonController : MonoBehaviour
     }
 
 
+
     void Update()
     {
         //gazeObj = GetComponentInChildren<gazeCheck>().gazedObject;
         //Debug.Log("button" + gazeObj);
 
-        pressedObj = buttonMonitor();
+        pressedObj = ButtonMonitor();
 
         switch (pressedObj)
         {
-        case "gear":
-            gbButton.transform.Find("gear").gameObject.SetActive(false);
-            gbButton.transform.Find("optionA").gameObject.SetActive(true);
-            gbButton.transform.Find("optionB").gameObject.SetActive(true);
-            gbButton.transform.Find("optionC").gameObject.SetActive(true);
+            case "gear":
+                GearShift();
+                print ("gear");
+                break;
 
-            print ("gear");
-            break;
-        case "a":
-            gbButton.transform.Find("optionA").gameObject.SetActive(false);
-            gbButton.transform.Find("optionB").gameObject.SetActive(false);
-            gbButton.transform.Find("optionC").gameObject.SetActive(false);
+            case "a":
+                GearShift();
 
-            gbButton.transform.Find("gear").gameObject.SetActive(true);
+                gbPlan.transform.Find("planA").gameObject.SetActive(true);
+                gbPlan.transform.Find("planB").gameObject.SetActive(false);
+                gbPlan.transform.Find("planC").gameObject.SetActive(false);
 
-            gbPlan.transform.Find("planA").gameObject.SetActive(true);
-            gbPlan.transform.Find("planB").gameObject.SetActive(false);
-            gbPlan.transform.Find("planC").gameObject.SetActive(false);
+                print ("A");
+                break;
+            case "b":
+                GearShift();
 
-            print ("A");
-            break;
-        case "b":
-            gbButton.transform.Find("optionA").gameObject.SetActive(false);
-            gbButton.transform.Find("optionB").gameObject.SetActive(false);
-            gbButton.transform.Find("optionC").gameObject.SetActive(false);
+                gbPlan.transform.Find("planA").gameObject.SetActive(false);
+                gbPlan.transform.Find("planB").gameObject.SetActive(true);
+                gbPlan.transform.Find("planC").gameObject.SetActive(false);
 
-            gbButton.transform.Find("gear").gameObject.SetActive(true);
+                print ("B");
+                break;
+            case "c":
+                GearShift();
 
-            gbPlan.transform.Find("planA").gameObject.SetActive(false);
-            gbPlan.transform.Find("planB").gameObject.SetActive(true);
-            gbPlan.transform.Find("planC").gameObject.SetActive(false);
+                gbPlan.transform.Find("planA").gameObject.SetActive(false);
+                gbPlan.transform.Find("planB").gameObject.SetActive(false);
+                gbPlan.transform.Find("planC").gameObject.SetActive(true);
 
-            print ("B");
-            break;
-        case "c":
-            gbButton.transform.Find("optionA").gameObject.SetActive(false);
-            gbButton.transform.Find("optionB").gameObject.SetActive(false);
-            gbButton.transform.Find("optionC").gameObject.SetActive(false);
-
-            gbButton.transform.Find("gear").gameObject.SetActive(true);
-
-            gbPlan.transform.Find("planA").gameObject.SetActive(false);
-            gbPlan.transform.Find("planB").gameObject.SetActive(false);
-            gbPlan.transform.Find("planC").gameObject.SetActive(true);
-
-            print ("C");
-            break;
-        default:
-            print ("no action");
-            break;
+                print ("C");
+                break;
+            default:
+                print ("no action");
+                break;
         }
     }
 }
