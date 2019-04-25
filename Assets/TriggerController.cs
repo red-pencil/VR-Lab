@@ -20,7 +20,7 @@ public class TriggerController : MonoBehaviour
     private void OnTriggerEnter(Collider other)
     {
         string doorName = other.name;
-        string indicator;
+        string indicator = "";
         switch (doorName)
         {
             case "DoorMark":
@@ -31,17 +31,18 @@ public class TriggerController : MonoBehaviour
                 indicator = "Welcome to ...\nSympathic Coumptuing Lab...";
                 break;
 
-            default:
-                indicator = "";
-                break;
+            //default:
+            //    indicator = "!!!";
+            //    break;
 
         }
 
         oracle.text = indicator;
     }
 
-    private void OnTriggerExit()
+    private IEnumerator OnTriggerExit()
     {
+        yield return new WaitForSeconds(3);
         oracle.text = null;
     }
 }
