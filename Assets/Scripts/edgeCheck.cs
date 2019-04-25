@@ -25,7 +25,7 @@ public class edgeCheck : MonoBehaviour
         Debug.DrawRay(transform.position, transform.forward * gazeDistance, Color.green);
         if (Physics.Raycast(gazeRay, out hit, gazeDistance))
         {
-            //Debug.Log("hit - " + hit.collider.name);
+            Debug.Log("hit - " + hit.collider.name);
             _leftEdge = (hit.collider.name == "leftEdge") ? true : false;
             _rightEdge = (hit.collider.name == "rightEdge") ? true : false;
 

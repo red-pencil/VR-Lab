@@ -25,7 +25,7 @@ public class PlayerBodyClamp : MonoBehaviour
         
         float headY = gbCamera.transform.eulerAngles.y;
         float bodyY = gbBody.transform.eulerAngles.y;
-        Debug.Log("headY: " + headY + "bodyY: " + bodyY);
+        //Debug.Log("headY: " + headY + "bodyY: " + bodyY);
 
         if (Mathf.Abs(headY - bodyY) > 180)
         {

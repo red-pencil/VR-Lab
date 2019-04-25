@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class moveForward : MonoBehaviour
+public class MoveForward : MonoBehaviour
 {
 
     GameObject gbPlayer, gbHead;
@@ -17,11 +17,14 @@ public class moveForward : MonoBehaviour
     }
 
 
-    void Update()
+    void FixedUpdate()
     {
         if (_gazed)
             gbPlayer.transform.position += gbHead.transform.forward * speed;
+            //gbPlayer.GetComponent<Rigidbody>().AddForce(gbHead.transform.forward * speed);
     }
+
+
 
     public void Forward()
     {
