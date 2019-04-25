@@ -6,7 +6,7 @@ public class officePlayerController : MonoBehaviour
 {
     private Rigidbody rb;
     public float speed;
-    private deviceCamera pixel;
+    private DeviceCamera pixel;
     private officeCameraController eyeCamera;
     private gazeCheck button;
     public float pixelPower;
@@ -26,7 +26,7 @@ public class officePlayerController : MonoBehaviour
     void Start()
     {
         rb = GetComponent<Rigidbody>(); 
-        pixel = GetComponentInChildren<deviceCamera>();
+        pixel = GetComponentInChildren<DeviceCamera>();
         eyeCamera = GetComponentInChildren<officeCameraController>();
         button = GetComponentInChildren<gazeCheck>();
     }

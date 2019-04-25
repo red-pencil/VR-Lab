@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class gPlayerController : MonoBehaviour
+public class GPlayerController : MonoBehaviour
 {
     GameObject gbCamera, gbBody, gbHead;
 
@@ -25,8 +25,8 @@ public class gPlayerController : MonoBehaviour
     void Start()
     {
         gbCamera = Camera.main.gameObject;
-        gbBody = gameObject.transform.Find("dummyBody").gameObject;
-        gbHead = gameObject.transform.Find("dummyHead").gameObject;
+        gbBody = gameObject.transform.Find("DummyBody").gameObject;
+        gbHead = gameObject.transform.Find("DummyHead").gameObject;
 
         orginalTrans = transform.localRotation;
 

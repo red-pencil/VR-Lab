@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class gButtonController : MonoBehaviour
+public class ButtonState : MonoBehaviour
 {
     public bool _gazed;
     public bool _pressed = false;

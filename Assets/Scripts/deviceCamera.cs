@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class deviceCamera : MonoBehaviour
+public class DeviceCamera : MonoBehaviour
 {
     WebCamDevice[] devices;
     WebCamDevice backCam;

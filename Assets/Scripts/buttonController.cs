@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class buttonController : MonoBehaviour
+public class ButtonController : MonoBehaviour
 {
     public string gazeObj, pressedObj;
     private GameObject gbButton, gbPlan, gbHead;
@@ -14,15 +14,15 @@ public class buttonController : MonoBehaviour
 
     void Start()
     {
-        gbButton = GameObject.Find("allButton");
-        gbPlan = GameObject.Find("officeBase");
-        gbHead = GameObject.Find("dummyHead");
+        gbButton = GameObject.Find("AllButton");
+        gbPlan = GameObject.Find("OfficeBase");
+        gbHead = GameObject.Find("DummyHead");
 
 
-        optionA = gbButton.transform.Find("optionA").gameObject;
-        optionB = gbButton.transform.Find("optionB").gameObject;
-        optionC = gbButton.transform.Find("optionC").gameObject;
-        gear = gbButton.transform.Find("gear").gameObject;
+        optionA = gbButton.transform.Find("OptionA").gameObject;
+        optionB = gbButton.transform.Find("OptionB").gameObject;
+        optionC = gbButton.transform.Find("OptionC").gameObject;
+        gear = gbButton.transform.Find("Gear").gameObject;
 
         menu = gbHead.transform.Find("MyMenu").gameObject;
 
@@ -62,10 +62,10 @@ public class buttonController : MonoBehaviour
         for (int i =0; i <buttons.Length; i++)
         {
             //Debug.Log(buttons[i]);
-            if (buttons[i].GetComponent<gButtonController>()._pressed)
+            if (buttons[i].GetComponent<ButtonState>()._pressed)
             {
-                buttons[i].GetComponent<gButtonController>().SetPress(false);
-                buttons[i].GetComponent<gButtonController>().SetGaze(false);
+                buttons[i].GetComponent<ButtonState>().SetPress(false);
+                buttons[i].GetComponent<ButtonState>().SetGaze(false);
                 return buttons[i].name;
             }
                 
@@ -84,9 +84,9 @@ public class buttonController : MonoBehaviour
 
         switch (pressedObj)
         {
-            case "gear":
+            case "Gear":
                 GearShift();
-                print ("gear");
+                print ("Gear");
                 break;
 
             case "a":

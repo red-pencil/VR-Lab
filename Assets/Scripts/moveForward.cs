@@ -12,7 +12,7 @@ public class moveForward : MonoBehaviour
     void Start()
     {
         gbPlayer = GameObject.FindGameObjectWithTag("Player");
-        gbHead = GameObject.Find("dummyHead").gameObject;
+        gbHead = GameObject.Find("DummyHead").gameObject;
         _gazeMode = true;
     }
 

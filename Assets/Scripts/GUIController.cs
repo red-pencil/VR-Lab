@@ -9,21 +9,21 @@ public class GUIController : MonoBehaviour
     public Text message;
     public GameObject menu;
     public GameObject PUI, map, cam;
-    buttonController buttonCtrl;
+    ButtonController buttonCtrl;
 
     void Start()
     {
-        message.text = "Hello player!";
+        message.text = "Hello Lichao!";
         menu = GameObject.Find("MyMenu");
-        PUI = GameObject.Find("plainUI");
-        map = PUI.transform.Find("map").gameObject;
-        cam = PUI.transform.Find("deviceCamera").gameObject;
-        buttonCtrl = GameObject.Find("player").GetComponent<buttonController>();
+        PUI = GameObject.Find("PlainUI");
+        map = PUI.transform.Find("Map").gameObject;
+        cam = PUI.transform.Find("DeviceCamera").gameObject;
+        buttonCtrl = GameObject.Find("Player").GetComponent<ButtonController>();
     }
 
     public void OpenPUI()
     {
-        PUI.SetActive(!map.activeSelf);
+        PUI.SetActive(!PUI.activeSelf);
         TurnOffMenu();
     }
 

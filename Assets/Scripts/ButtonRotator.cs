@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class motionRotate : MonoBehaviour
+public class ButtonRotator : MonoBehaviour
 {
     // Start is called before the first frame update
     private Vector3 ox;
@@ -23,7 +23,7 @@ public class motionRotate : MonoBehaviour
         Vector3 xx;
         
         //xx = Vector3.Angle(transform.forward, Vector3.forward)>30? Vector3.down: Vector3.up;
-        ox = GameObject.Find("allButton").transform.up;
+        ox = GameObject.Find("AllButton").transform.up;
         Debug.DrawRay(transform.position,ox,Color.green);
         
 

@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class dotController : MonoBehaviour
+public class DotController : MonoBehaviour
 {
     public GameObject realPlayer;
     public float scale = 1;
