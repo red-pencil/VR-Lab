@@ -28,21 +28,31 @@ public class TriggerController : MonoBehaviour
                 break;
 
             case "DoorLab":
-                indicator = "Welcome to ...\nSympathic Coumptuing Lab...";
+                indicator = "Welcome to ...\nEmpathic Computing Lab...";
                 break;
 
-            //default:
-            //    indicator = "!!!";
-            //    break;
+                //default:
+                //    indicator = "!!!";
+                //    break;
 
         }
 
         oracle.text = indicator;
     }
 
-    private IEnumerator OnTriggerExit()
+    private IEnumerator OnTriggerExit(Collider other)
     {
         yield return new WaitForSeconds(3);
         oracle.text = null;
+        if (other.name == "OpenDoorTrigger")
+            other.gameObject.transform.GetComponentInParent<Elevator>().CloseDoor();
+    }
+
+    private void OnTriggerStay(Collider other)
+    {
+
+        if (other.name == "OpenDoorTrigger")
+            other.gameObject.transform.GetComponentInParent<Elevator>().OpenDoor();
+        
     }
 }

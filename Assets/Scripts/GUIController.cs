@@ -8,13 +8,14 @@ public class GUIController : MonoBehaviour
 
     public Text message;
     public GameObject menu;
-    public GameObject PUI, map, cam;
+    public GameObject PUI, bgm, map, cam;
     ButtonController buttonCtrl;
 
     void Start()
     {
         message.text = "Hello Lichao!";
         menu = GameObject.Find("MyMenu");
+        bgm = GameObject.Find("Audio Source");
         PUI = GameObject.Find("PlainUI");
         map = PUI.transform.Find("Map").gameObject;
         cam = PUI.transform.Find("DeviceCamera").gameObject;
@@ -24,6 +25,12 @@ public class GUIController : MonoBehaviour
     public void OpenPUI()
     {
         PUI.SetActive(!PUI.activeSelf);
+        TurnOffMenu();
+    }
+
+    public void ToggleAudio()
+    {
+        bgm.SetActive(!bgm.activeSelf);
         TurnOffMenu();
     }
 
