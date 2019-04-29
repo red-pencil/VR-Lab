@@ -7,8 +7,9 @@ public class ButtonController : MonoBehaviour
     public string gazeObj, pressedObj;
     private GameObject gbButton, gbPlan, gbHead;
     GameObject[] buttons = new GameObject[5];
-    private GameObject optionA, optionB, optionC, gear;
-    private GameObject menu;
+    private GameObject option, option3D, gear, gear2D, gear3D;
+    private GameObject option2D;
+    private GameObject menu, BUI;
     //private gButtonController Switches;
 
 
@@ -19,37 +20,47 @@ public class ButtonController : MonoBehaviour
         gbHead = GameObject.Find("DummyHead");
 
 
-        optionA = gbButton.transform.Find("OptionA").gameObject;
-        optionB = gbButton.transform.Find("OptionB").gameObject;
-        optionC = gbButton.transform.Find("OptionC").gameObject;
-        gear = gbButton.transform.Find("Gear").gameObject;
+        option3D = gbButton.transform.Find("Option3D").gameObject;
+       
+        gear3D = gbButton.transform.Find("Gear").gameObject;
+        BUI = gbHead.transform.Find("BottomUI").gameObject;
+        gear2D = BUI.transform.Find("MenuButton").gameObject;
+
+        option2D = gbButton.transform.parent.Find("LosOptions").gameObject;
 
         menu = gbHead.transform.Find("MyMenu").gameObject;
 
-        optionA.SetActive(true);
-        optionB.SetActive(true);
-        optionC.SetActive(true);
-        gear.SetActive(true);
+        option3D.SetActive(true);
+        gear3D.SetActive(true);
         menu.SetActive(true);
+        BUI.SetActive(true);
+        gear2D.SetActive(true);
+        option2D.SetActive(true);
 
 
         buttons = GameObject.FindGameObjectsWithTag("button");
 
-        optionA.SetActive(false);
-        optionB.SetActive(false);
-        optionC.SetActive(false);
+        option3D.SetActive(false);
         menu.SetActive(false);
+        BUI.SetActive(false);
+        gear2D.SetActive(false);
+        option2D.SetActive(false);
+
+        option = option3D;
+
     }
 
     public void GearShift()
     {
+        gear = BUI.activeSelf ? gear2D : gear3D;
+        
 
-        optionA.SetActive(!optionA.activeSelf);
-        optionB.SetActive(!optionB.activeSelf);
-        optionC.SetActive(!optionC.activeSelf);
+        option.SetActive(!option.activeSelf);
+        option = BUI.activeSelf ? option2D : option3D;
         menu.SetActive(!menu.activeSelf);
-
+        Debug.Log("this key is " + gear.name);
         gear.SetActive(!gear.activeSelf);
+
 
     }
 
@@ -58,10 +69,12 @@ public class ButtonController : MonoBehaviour
         //bool[] buttonStates = new bool[5];
         //string[] buttonNames = new string[5];
         //GameObject[] buttons = GameObject.FindGameObjectsWithTag("button");
+
         
+
         for (int i =0; i <buttons.Length; i++)
         {
-            //Debug.Log(buttons[i]);
+            //Debug.Log(buttons[i].name);
             if (buttons[i].GetComponent<ButtonState>()._pressed)
             {
                 buttons[i].GetComponent<ButtonState>().SetPress(false);
@@ -89,7 +102,13 @@ public class ButtonController : MonoBehaviour
                 print ("Gear");
                 break;
 
-            case "a":
+            case "MenuButton":
+                GearShift();
+                print("MenuButton");
+                break;
+
+
+            case ("AButton"):
                 GearShift();
 
                 gbPlan.transform.Find("planA").gameObject.SetActive(true);
@@ -98,7 +117,7 @@ public class ButtonController : MonoBehaviour
 
                 print ("A");
                 break;
-            case "b":
+            case "BButton":
                 GearShift();
 
                 gbPlan.transform.Find("planA").gameObject.SetActive(false);
@@ -107,7 +126,7 @@ public class ButtonController : MonoBehaviour
 
                 print ("B");
                 break;
-            case "c":
+            case "CButton":
                 GearShift();
 
                 gbPlan.transform.Find("planA").gameObject.SetActive(false);
@@ -120,5 +139,8 @@ public class ButtonController : MonoBehaviour
                 print ("no action");
                 break;
         }
+
+        //gear3D.SetActive(BUI.activeSelf ? false : true);
+        //option.SetActive(!gear.activeSelf);
     }
 }

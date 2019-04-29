@@ -7,13 +7,14 @@ public class MoveForward : MonoBehaviour
 
     GameObject gbPlayer, gbHead;
     public float speed = 1;
-    public bool _gazed, _gazeMode;
+    public bool _gazed, _gazeMode, _autoForward;
     
     void Start()
     {
         gbPlayer = GameObject.FindGameObjectWithTag("Player");
         gbHead = GameObject.Find("DummyHead").gameObject;
         _gazeMode = true;
+        _autoForward = false;
     }
 
 
@@ -22,9 +23,17 @@ public class MoveForward : MonoBehaviour
         if (_gazed)
             gbPlayer.transform.position += gbHead.transform.forward * speed;
             //gbPlayer.GetComponent<Rigidbody>().AddForce(gbHead.transform.forward * speed);
+
+        if (_autoForward)
+            gbPlayer.transform.position += gbHead.transform.forward * speed;
     }
 
 
+    public void ShiftAuto()
+    {
+
+        _autoForward = !_autoForward;
+    }
 
     public void Forward()
     {
