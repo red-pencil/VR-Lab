@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class ButtonState : MonoBehaviour
 {
@@ -13,12 +14,23 @@ public class ButtonState : MonoBehaviour
     public Material inactiveMaterial, gazedAtMaterial;
     private Renderer myRenderer;
 
+    private Graphic m_Graphic;
+
+    private Color m_Color;
+
     void Start()
     {
         myRenderer = GetComponent<Renderer>();
         SetGaze(false);
         SetPress(false);
         //Debug.Log("START" + gameObject.name);
+        if (GetComponent<RawImage>())
+        {
+            m_Color = new Color32(54, 255, 237, 255);
+            m_Graphic = GetComponent<RawImage>();
+
+        }
+            
     }
 
     void Update()
@@ -28,8 +40,12 @@ public class ButtonState : MonoBehaviour
 
 
         if (!_gazed)
+        {
             SetPress(false);
-            //Debug.Log("a");
+            if (m_Graphic)
+                m_Graphic.color = m_Color;
+        }
+        //Debug.Log("a");
         else
         {
             if (_timeMode)
@@ -37,6 +53,10 @@ public class ButtonState : MonoBehaviour
                 SetPress(false);
                 timeCounter = _gazed ? timeCounter + Time.deltaTime : 0;
                 SetPress((timeCounter >= 2) ? true : false);
+                //float r = 54f + timeCounter * 20f;
+                //buttonColor = new Color32((int)r, 255, 237, 255);
+                if (m_Graphic)
+                    m_Graphic.color = Color.Lerp(new Color32(54, 255, 237, 255), Color.red, 1);
             }
 
             //if (_pressed)
@@ -63,6 +83,33 @@ public class ButtonState : MonoBehaviour
     public void SetPress(bool _setPress)
     {
         _pressed = _setPress;
+    }
+
+    public void GazeSetPress(bool _setGaze)
+    {
+        _gazed = _setGaze;
+        StartCoroutine(GazeWait());
+        //_pressed = _setPress;
+
+    }
+
+    IEnumerator GazeWait()
+    {
+        //print(Time.time);
+        yield return new WaitForSeconds(2);
+        //print(Time.time);
+        if (_gazed)
+            _pressed = !_pressed;
+    }
+
+    public void TurnOffAuto()
+    {
+        if (this.transform.parent.Find("ForwardButton"))
+        {
+            this.transform.parent.Find("ForwardButton").gameObject.GetComponent<MoveForward>()._autoForward = false;
+
+        }
+        
     }
 
 

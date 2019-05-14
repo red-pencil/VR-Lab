@@ -35,6 +35,7 @@ public class MoveForward : MonoBehaviour
         _autoForward = !_autoForward;
     }
 
+
     public void Forward()
     {
         _gazed = _gazeMode ? true : _gazed;
