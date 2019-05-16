@@ -24,7 +24,7 @@ public class ButtonState : MonoBehaviour
         SetGaze(false);
         SetPress(false);
         //Debug.Log("START" + gameObject.name);
-        if (GetComponent<RawImage>())
+        if (GetComponent<RawImage>() && GetComponent<RawImage>().texture)
         {
             m_Color = new Color32(54, 255, 237, 255);
             m_Graphic = GetComponent<RawImage>();
@@ -38,6 +38,7 @@ public class ButtonState : MonoBehaviour
 
         // Debug.Log("UPDATE" + gameObject.name);
 
+        timeCounter = _gazed ? timeCounter + Time.deltaTime : 0;
 
         if (!_gazed)
         {
@@ -51,8 +52,8 @@ public class ButtonState : MonoBehaviour
             if (_timeMode)
             {
                 SetPress(false);
-                timeCounter = _gazed ? timeCounter + Time.deltaTime : 0;
-                SetPress((timeCounter >= 2) ? true : false);
+                
+                SetPress((timeCounter >= 1) ? true : false);
                 //float r = 54f + timeCounter * 20f;
                 //buttonColor = new Color32((int)r, 255, 237, 255);
                 if (m_Graphic)
