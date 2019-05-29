@@ -10,6 +10,14 @@ public class ButtonController : MonoBehaviour
     private GameObject option, option3D, gear, gear2D, gear3D;
     private GameObject option2D;
     private GameObject menu, BUI;
+
+    public enum DefaultMode
+    {
+        Icon_2D,
+        Icon_3D
+    }
+
+    public DefaultMode defaultMode;
     //private gButtonController Switches;
 
 
@@ -40,13 +48,27 @@ public class ButtonController : MonoBehaviour
 
         buttons = GameObject.FindGameObjectsWithTag("button");
 
+        option2D.SetActive(false);
         option3D.SetActive(false);
         menu.SetActive(false);
-        BUI.SetActive(false);
-        gear2D.SetActive(false);
-        option2D.SetActive(false);
+        
+        
 
-        option = option3D;
+        if (defaultMode == DefaultMode.Icon_2D)
+        {
+            gear3D.SetActive(false);
+            option = option2D;
+            gbHead.transform.Find("arrow").gameObject.SetActive(false);
+        }
+        else if (defaultMode == DefaultMode.Icon_3D)
+        {
+            gear2D.SetActive(false);
+            option = option3D;
+            BUI.SetActive(false);
+            
+        }
+
+        
 
     }
 
